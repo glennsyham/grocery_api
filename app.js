@@ -1,4 +1,8 @@
 // HTTP Methods
+// add http://localhost:3000/
+// update http://localhost:3000/
+// delete http://localhost:3000/{id}
+
 const http = require("http");
 const url = require('node:url');
 const PORT = 3000;
