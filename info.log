@@ -4,3 +4,10 @@
 2023-09-14T19:56:04.331Z [error]: Its log, log, log
 2023-09-14T19:57:37.070Z [info]:  DELETE {"id":1,"name":"name2","quantity":10,"price":5,"purchased":false}
 2023-09-14T19:57:51.400Z [error]:  DELETE ID not found 10000
+2023-09-15T15:58:13.642Z [info]:  ADD {"name":"name","quantity":10,"price":5,"purchased":false,"id":3}
+2023-09-15T16:01:48.405Z [info]:  ADD {"name":"name","quantity":10,"price":5,"purchased":false,"id":3}
+2023-09-15T16:01:51.578Z [error]:  DELETE ID not found grocery/10000
+2023-09-15T16:01:55.513Z [error]:  DELETE ID not found grocery/1
+2023-09-15T16:04:38.743Z [error]:  DELETE ID not found rocery/1
+2023-09-15T16:14:26.357Z [info]:  DELETE {"id":1,"name":"name2","quantity":10,"price":5,"purchased":false}
+2023-09-15T16:14:31.552Z [error]:  DELETE ID not found 1000
