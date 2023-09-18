@@ -18,52 +18,51 @@ describe("GET /grocery", () => {
     });
 
 });
+const add_item = { "name": "test", "quantity": parseInt(10), "price": parseFloat(5.0), "purchased": false };
 
 describe("POST /grocery", () => {
-
     test("should respond with a 200 status code", async () => {
         const response = await request(baseURL).post("/grocery").send(
-            { "name": "test", "quantity": 10, "price": 5.0, "purchased": false }
+            add_item
         );
-        expect(response.statusCode).toBe(201);
-    });
 
-    test("should specify json in the content type header", async () => {
-        const response = await request(baseURL).post("/grocery").send(
-            { "name": "test", "quantity": 10, "price": 5.0, "purchased": false }
-        );
+        expect(response.statusCode).toBe(201);
+        expect(response.body['grocery'].name).toBe(add_item.name);
+        expect(response.body['grocery'].quantity).toBe(add_item.quantity);
+        expect(response.body['grocery'].price).toBe(add_item.price);
+        expect(response.body['grocery'].purchased).toBe(add_item.purchased);
         expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
     });
+
 
 });
 
 describe("PUT /grocery", () => {
-
+    let update_item = { "id": 3, "name": "testchange", "quantity": parseInt(10), "price": parseFloat(5.0), "purchased": false };
     test("should respond with a 200 status code", async () => {
         const response = await request(baseURL).put("/grocery").send(
-            { "id": 1, "name": "test", "quantity": 10, "price": 5.0, "purchased": false }
+            update_item
         );
+        expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
+        expect(response.body['grocery'].name).toBe(update_item.name);
+        expect(response.body['grocery'].quantity).toBe(update_item.quantity);
+        expect(response.body['grocery'].price).toBe(update_item.price);
+        expect(response.body['grocery'].purchased).toBe(update_item.purchased);
         expect(response.statusCode).toBe(200);
     });
 
-    test("should specify json in the content type header", async () => {
-        const response = await request(baseURL).put("/grocery").send(
-            { "id": 1, "name": "test", "quantity": 10, "price": 5.0, "purchased": false }
-        );
-        expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
-    });
+
 });
 
 
 describe("DELETE /grocery", () => {
 
     test("should respond with a 201 status code", async () => {
-        const response = await request(baseURL).delete("/grocery?id=1").send();
+        const response = await request(baseURL).delete("/grocery?id=3").send();
         expect(response.statusCode).toBe(201);
+        expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
+
     });
 
-    test("should specify json in the content type header", async () => {
-        const response = await request(baseURL).delete("/grocery?id=1").send();
-        expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
-    });
+
 });
